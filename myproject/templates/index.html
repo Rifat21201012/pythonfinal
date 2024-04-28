@@ -4,69 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f1f1f1; /* Light grey background color */
         }
 
         .navbar {
             background-color: #333; /* Dark background color */
             overflow: hidden;
+            color: #fff; /* White text color */
+            display: flex;
+            justify-content: space-between; /* Align items horizontally with space between */
+            align-items: center; /* Align items vertically to the center */
+            padding: 10px 20px; /* Add padding to the top and bottom */
         }
 
         .navbar a {
-            float: left;
-            display: block;
-            color: #fff; /* White color */
-            text-align: center;
-            padding: 14px 20px;
+            color: inherit; /* Inherit color from parent (.navbar) */
             text-decoration: none;
             font-size: 16px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
         }
 
         .navbar a:hover {
-            background-color: #555; /* Darker background color on hover */
+            color: #e74c3c; /* Red color on hover */
         }
 
-        .navbar h1 {
-            float: left;
-            margin: 0;
-            padding: 14px 20px;
-            color: #fff; /* White color */
+        .navbar i {
+            margin-right: 5px; /* Add margin between icon and text */
         }
 
         .content {
             padding: 20px;
+            text-align: center;
         }
 
         h1 {
-            color: #ff0000; /* Red color */
+            color: #e74c3c; /* Red color */
             margin-bottom: 30px;
-            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .btn {
+            background-color: #e74c3c; /* Red color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin: 0 10px; /* Add margin between buttons */
+        }
+
+        .btn:hover {
+            background-color: #c0392b; /* Darker red on hover */
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Search Donor</a>
-        <a href="{% url 'signup' %}">Register</a>
-        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+        <div>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-search"></i> Search Donor</a>
+            <a href="{% url 'signup' %}" class="btn"><i class="fas fa-user-plus"></i> Register</a>
+            <a href="{% url 'login' %}" class="btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
     </div>
 
     <div class="content">
-        <h1>Welcome!</h1>
-        {% if request.user.is_authenticated %}
-            <p>Welcome, {{ request.user.username }}!</p>
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <p>Please login or register to access the content.</p>
-        {% endif %}
+        <h1>Welcome to Our Website!</h1>
+        <p>This is the homepage of our website. Feel free to explore!</p>
     </div>
+
+    <!-- Font Awesome CDN for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>
